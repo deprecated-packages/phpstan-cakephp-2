@@ -19,7 +19,7 @@ final class ShellClassPropertyExtensionTest extends TypeInferenceTestCase
         $this->assertFileAsserts($assertType, $file, ...$args);
     }
 
-    public static function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): \Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_shell_model.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_shell_task.php');

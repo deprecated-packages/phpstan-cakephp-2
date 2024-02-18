@@ -15,7 +15,7 @@ final class ClassRegistryInitExtensionTest extends TypeInferenceTestCase
     /**
      * @return mixed[]
      */
-    public static function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): \Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/variable_reference.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/not_a_class.php');

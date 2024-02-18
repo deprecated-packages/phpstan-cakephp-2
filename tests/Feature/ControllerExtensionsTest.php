@@ -12,7 +12,7 @@ class ControllerExtensionsTest extends TypeInferenceTestCase
     /**
      * @return mixed[]
      */
-    public static function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): \Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/data/existing_controller_model.php');
         yield from self::gatherAssertTypes(__DIR__ . '/data/existing_controller_component.php');

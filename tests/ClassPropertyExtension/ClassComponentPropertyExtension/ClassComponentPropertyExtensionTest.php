@@ -22,7 +22,7 @@ final class ClassComponentPropertyExtensionTest extends TypeInferenceTestCase
     /**
      * @return mixed[]
      */
-    public static function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): \Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_component_component.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_component_property.php');
