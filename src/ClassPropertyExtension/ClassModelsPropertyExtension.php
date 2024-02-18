@@ -9,7 +9,7 @@ namespace PHPStanCakePHP2\ClassPropertyExtension;
  */
 final class ClassModelsPropertyExtension extends AbstractClassPropertyExtension
 {
-    protected function getPropertyParentClassName(): string
+    public function getPropertyParentClassName(): string
     {
         return 'Model';
     }
@@ -17,7 +17,7 @@ final class ClassModelsPropertyExtension extends AbstractClassPropertyExtension
     /**
      * @return array<string>
      */
-    protected function getContainingClassNames(): array
+    public function getContainingClassNames(): array
     {
         return [
             'Controller',
@@ -26,7 +26,7 @@ final class ClassModelsPropertyExtension extends AbstractClassPropertyExtension
         ];
     }
 
-    protected function getClassNameFromPropertyName(
+    public function getClassNameFromPropertyName(
         string $propertyName
     ): string {
         return $propertyName;

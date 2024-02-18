@@ -11,7 +11,7 @@ namespace PHPStanCakePHP2\ClassPropertyExtension;
  */
 final class ShellClassPropertyExtension extends AbstractClassPropertyExtension
 {
-    protected function getPropertyParentClassName(): string
+    public function getPropertyParentClassName(): string
     {
         return 'Shell';
     }
@@ -19,12 +19,12 @@ final class ShellClassPropertyExtension extends AbstractClassPropertyExtension
     /**
      * @return array<string>
      */
-    protected function getContainingClassNames(): array
+    public function getContainingClassNames(): array
     {
         return ['Shell'];
     }
 
-    protected function getClassNameFromPropertyName(
+    public function getClassNameFromPropertyName(
         string $propertyName
     ): string {
         return $propertyName . 'Task';
