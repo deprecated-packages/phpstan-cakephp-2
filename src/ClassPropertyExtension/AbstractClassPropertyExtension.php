@@ -38,10 +38,9 @@ abstract class AbstractClassPropertyExtension implements PropertiesClassReflecti
         ClassReflection $classReflection,
         string $propertyName
     ): PropertyReflection {
-        return new PublicReadOnlyPropertyReflection(
-            $this->getClassNameFromPropertyName($propertyName),
-            $classReflection
-        );
+        $correctedPropertyName = $this->getClassNameFromPropertyName($propertyName);
+
+        return new PublicReadOnlyPropertyReflection($correctedPropertyName, $classReflection);
     }
 
     /**

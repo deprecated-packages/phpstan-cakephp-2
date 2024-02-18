@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\Service;
 
-use Exception;
 use PHPStan\BetterReflection\Reflection\Adapter\ReflectionProperty;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStanCakePHP2\Reflection\ClassReflectionFinder;
@@ -27,7 +26,7 @@ final class SchemaService
     private array $schemaPaths;
 
     /**
-     * @var array<string, table_schema>
+     * @var array<string, mixed>
      */
     private ?array $tableSchemas = null;
 
@@ -43,9 +42,6 @@ final class SchemaService
         $this->schemaPaths = $schemaPaths;
     }
 
-    /**
-     * @throws Exception
-     */
     public function hasTable(string $table): bool
     {
         return array_key_exists($table, $this->getTableSchemas());
@@ -53,8 +49,6 @@ final class SchemaService
 
     /**
      * @return array<string, mixed>
-     *
-     * @throws Exception
      */
     private function getTableSchemas(): array
     {
@@ -68,9 +62,11 @@ final class SchemaService
             $this->reflectionProvider->getClass('CakeSchema')->getNativeReflection()->getProperties()
         );
         $this->tableSchemas = [];
+
         $classReflectionFinder = new ClassReflectionFinder(
             $this->reflectionProvider
         );
+
         $schemaReflections = $classReflectionFinder->getClassReflections(
             $this->schemaPaths,
             'CakeSchema',
@@ -78,6 +74,7 @@ final class SchemaService
                 return $this->fileNameToClassName($fileName);
             }
         );
+
         foreach ($schemaReflections as $schemaReflection) {
             $propertyNames = array_map(
                 function (ReflectionProperty $reflectionProperty) {
@@ -98,16 +95,14 @@ final class SchemaService
 
     private function fileNameToClassName(string $fileName): string
     {
-        return str_replace(
+        $dashedFileName = str_replace(
+            ['_', '-'],
             ' ',
-            '',
-            ucwords(
-                str_replace(
-                    ['_', '-'],
-                    ' ',
-                    basename($fileName, '.php')
-                )
-            )
-        ) . 'Schema';
+            basename($fileName, '.php')
+        );
+
+        $upperCasedFileName = ucwords($dashedFileName);
+
+        return str_replace(' ', '', $upperCasedFileName) . 'Schema';
     }
 }

@@ -16,6 +16,7 @@ parameters:
         - ../stubs/Utility.stub
 
 services:
+    # checked
     -
         class: PHPStanCakePHP2\ClassPropertyExtension\ClassComponentPropertyExtension
         tags:
