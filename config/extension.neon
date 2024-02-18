@@ -5,12 +5,12 @@ parametersSchema:
 
 parameters:
     behaviorPaths:
-        #- ../vendor/cakephp/cakephp/lib/Cake/Model/Behavior/*.php
-        - ../lib/Cake/Model/Behavior/*.php
-        - ../app/Plugin/*/Model/Behavior/*.php
-        - ../app/Model/Behavior/*.php
+        - vendor/cakephp/cakephp/lib/Cake/Model/Behavior/*.php
+        - lib/Cake/Model/Behavior/*.php
+        - app/Plugin/*/Model/Behavior/*.php
+        - app/Model/Behavior/*.php
     schemaPaths:
-        - ../app/Config/Schema/*.php
+        - app/Config/Schema/*.php
     stubFiles:
         - ../stubs/Routing/Router.stub
         - ../stubs/Utility.stub
