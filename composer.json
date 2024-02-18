@@ -20,7 +20,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PHPStanCakePHP2\\Test\\": "tests"
+            "PHPStanCakePHP2\\Tests\\": "tests"
         },
         "classmap": [
             "stubs",

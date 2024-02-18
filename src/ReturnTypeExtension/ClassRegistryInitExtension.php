@@ -2,26 +2,27 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ReturnTypeExtension;
 
-use PHPStan\Type\Constant\ConstantStringType;
-use PHPStanCakePHP2\CakePHP\PortedInflector;
-use PHPStanCakePHP2\Service\SchemaService;
 use PhpParser\Node\Expr\StaticCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Type\BooleanType;
+use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicStaticMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\ObjectWithoutClassType;
 use PHPStan\Type\Type;
 use PHPStan\Type\UnionType;
+use PHPStanCakePHP2\CakePHP\PortedInflector;
+use PHPStanCakePHP2\Service\SchemaService;
 
 /**
- * @see \PHPStanCakePHP2\Test\Feature\ClassRegistryInitTest
+ * @see \PHPStanCakePHP2\Tests\ReturnTypeExtension\ClassRegistryInitExtension\ClassRegistryInitExtensionTest
  */
-final class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
+final class
+ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
 {
     private ReflectionProvider $reflectionProvider;
 

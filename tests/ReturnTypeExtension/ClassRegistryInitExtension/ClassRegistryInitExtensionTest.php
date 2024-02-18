@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2\Test\ReturnTypeExtension\ClassRegistryInitExtension;
+namespace PHPStanCakePHP2\Tests\ReturnTypeExtension\ClassRegistryInitExtension;
 
 use PHPStan\Testing\TypeInferenceTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
- * @see \PHPStanCakePHP2\ClassRegistryInitExtension
+ * @see \PHPStanCakePHP2\ReturnTypeExtension\ClassRegistryInitExtension
  */
 final class ClassRegistryInitExtensionTest extends TypeInferenceTestCase
 {

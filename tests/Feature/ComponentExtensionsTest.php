@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2\Test\Feature;
+namespace PHPStanCakePHP2\Tests\Feature;
 
 use PHPStan\Testing\TypeInferenceTestCase;
 
