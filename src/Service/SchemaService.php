@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\Service;
 
-use PHPStanCakePHP2\ClassReflectionFinder;
-use Exception;
 use PHPStan\BetterReflection\Reflection\Adapter\ReflectionProperty;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStanCakePHP2\Reflection\ClassReflectionFinder;
 use ReflectionProperty as CoreReflectionProperty;
 
 /**
@@ -27,7 +26,7 @@ final class SchemaService
     private array $schemaPaths;
 
     /**
-     * @var array<string, table_schema>
+     * @var array<string, mixed>
      */
     private ?array $tableSchemas = null;
 
@@ -43,31 +42,13 @@ final class SchemaService
         $this->schemaPaths = $schemaPaths;
     }
 
-    /**
-     * @throws Exception
-     */
     public function hasTable(string $table): bool
     {
         return array_key_exists($table, $this->getTableSchemas());
     }
 
     /**
-     * @param string $table
-     * @return table_schema|null
-     * @throws Exception
-     */
-    public function getTableSchema(string $table)
-    {
-        $tableSchemas = $this->getTableSchemas();
-        return array_key_exists($table, $tableSchemas)
-            ? $tableSchemas[$table]
-            : null;
-    }
-
-    /**
-     * @return array<string, table_schema>
-     *
-     * @throws Exception
+     * @return array<string, mixed>
      */
     private function getTableSchemas(): array
     {
@@ -81,9 +62,11 @@ final class SchemaService
             $this->reflectionProvider->getClass('CakeSchema')->getNativeReflection()->getProperties()
         );
         $this->tableSchemas = [];
+
         $classReflectionFinder = new ClassReflectionFinder(
             $this->reflectionProvider
         );
+
         $schemaReflections = $classReflectionFinder->getClassReflections(
             $this->schemaPaths,
             'CakeSchema',
@@ -91,6 +74,7 @@ final class SchemaService
                 return $this->fileNameToClassName($fileName);
             }
         );
+
         foreach ($schemaReflections as $schemaReflection) {
             $propertyNames = array_map(
                 function (ReflectionProperty $reflectionProperty) {
@@ -111,16 +95,14 @@ final class SchemaService
 
     private function fileNameToClassName(string $fileName): string
     {
-        return str_replace(
+        $dashedFileName = str_replace(
+            ['_', '-'],
             ' ',
-            '',
-            ucwords(
-                str_replace(
-                    ['_', '-'],
-                    ' ',
-                    basename($fileName, '.php')
-                )
-            )
-        ) . 'Schema';
+            basename($fileName, '.php')
+        );
+
+        $upperCasedFileName = ucwords($dashedFileName);
+
+        return str_replace(' ', '', $upperCasedFileName) . 'Schema';
     }
 }

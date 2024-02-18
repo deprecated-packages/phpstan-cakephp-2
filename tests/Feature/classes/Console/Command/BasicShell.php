@@ -1,3 +1,5 @@
 <?php
 
-class BasicShell extends Shell {}
+class BasicShell extends Shell
+{
+}

@@ -1,0 +1,16 @@
+parameters:
+    level: 8
+
+    paths:
+        - src
+        - tests
+
+    excludePaths:
+        - tests/Feature/data/*
+        - */Fixture/*
+        # ported from cacke
+        - src/CakePHP/PortedInflector.php
+
+    ignoreErrors:
+        # not practical as mixed
+        - '#Method (.*?)::test(.*?)\(\) has parameter \$args with no type specified#'

@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ClassPropertyExtension;
 
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStanCakePHP2\Reflection\PublicReadOnlyPropertyReflection;
 
-abstract class ClassPropertiesExtension implements PropertiesClassReflectionExtension
+abstract class AbstractClassPropertyExtension implements PropertiesClassReflectionExtension
 {
     private ReflectionProvider $reflectionProvider;
 
@@ -37,18 +38,19 @@ abstract class ClassPropertiesExtension implements PropertiesClassReflectionExte
         ClassReflection $classReflection,
         string $propertyName
     ): PropertyReflection {
-        return new PublicReadOnlyPropertyReflection(
-            $this->getClassNameFromPropertyName($propertyName),
-            $classReflection
-        );
+        $correctedPropertyName = $this->getClassNameFromPropertyName($propertyName);
+
+        return new PublicReadOnlyPropertyReflection($correctedPropertyName, $classReflection);
     }
 
     /**
+     * @todo use constract instead to separate
      * Get the class name of the type of property.
      */
     abstract protected function getPropertyParentClassName(): string;
 
     /**
+     * @todo use constract instead to separate
      * Get the class names which can contain the property.
      *
      * @return array<string>
@@ -56,6 +58,7 @@ abstract class ClassPropertiesExtension implements PropertiesClassReflectionExte
     abstract protected function getContainingClassNames(): array;
 
     /**
+     * @todo use constract instead to separate
      * Return the class name from the property name.
      */
     abstract protected function getClassNameFromPropertyName(

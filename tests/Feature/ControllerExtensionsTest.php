@@ -2,29 +2,27 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2\Test\Feature;
+namespace PHPStanCakePHP2\Tests\Feature;
 
 use PHPStan\Testing\TypeInferenceTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ControllerExtensionsTest extends TypeInferenceTestCase
 {
     /**
      * @return mixed[]
      */
-    public function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): \Iterator
     {
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_controller_model.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_controller_component.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/invalid_controller_property.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_controller_component_with_same_method_name_as_model.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_controller_component_from_parent_controller.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_controller_model.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_controller_component.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/invalid_controller_property.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_controller_component_with_same_method_name_as_model.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_controller_component_from_parent_controller.php');
     }
 
-    /**
-     * @dataProvider dataFileAsserts
-     * @param mixed $args
-     */
-    public function testControllerExtensions(string $assertType, string $file, ...$args): void
+    #[DataProvider('dataFileAsserts')]
+    public function test(string $assertType, string $file, ...$args): void
     {
         $this->assertFileAsserts($assertType, $file, ...$args);
     }

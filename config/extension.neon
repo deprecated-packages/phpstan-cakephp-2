@@ -1,0 +1,58 @@
+# validate user input
+parametersSchema:
+    behaviorPaths: listOf(string())
+    schemaPaths: listOf(string())
+
+parameters:
+    behaviorPaths:
+        - vendor/cakephp/cakephp/lib/Cake/Model/Behavior/*.php
+        - lib/Cake/Model/Behavior/*.php
+        - app/Plugin/*/Model/Behavior/*.php
+        - app/Model/Behavior/*.php
+    schemaPaths:
+        - app/Config/Schema/*.php
+    stubFiles:
+        - ../stubs/Routing/Router.stub
+        - ../stubs/Utility.stub
+
+services:
+    # checked
+    -
+        class: PHPStanCakePHP2\ClassPropertyExtension\ClassComponentPropertyExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension
+
+    -
+        class: PHPStanCakePHP2\ClassPropertyExtension\ClassModelsPropertyExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension
+
+    # checked
+    -
+        class: PHPStanCakePHP2\ReturnTypeExtension\ClassRegistryInitExtension
+        tags:
+            - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+
+    # checked
+    -
+        class: PHPStanCakePHP2\ClassPropertyExtension\ShellClassPropertyExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension
+
+    -
+        class: PHPStanCakePHP2\ModelBehaviorsExtension
+        arguments:
+            behaviorPaths: %behaviorPaths%
+        tags:
+            - phpstan.broker.methodsClassReflectionExtension
+
+    -
+        class: PHPStanCakePHP2\Service\SchemaService
+        arguments:
+            schemaPaths: %schemaPaths%
+
+    -
+        class: PHPStanCakePHP2\LoadComponentOnFlyMethodReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
+

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ClassPropertyExtension;
 
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ClassConstFetch;
@@ -12,8 +12,12 @@ use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStanCakePHP2\Reflection\PublicReadOnlyPropertyReflection;
 
-final class ClassComponentsExtension implements PropertiesClassReflectionExtension
+/**
+ * @see \ClassPropertyExtension\ClassComponentPropertyExtension\ClassComponentPropertyExtensionTest
+ */
+final class ClassComponentPropertyExtension implements PropertiesClassReflectionExtension
 {
     private ReflectionProvider $reflectionProvider;
 
@@ -27,6 +31,8 @@ final class ClassComponentsExtension implements PropertiesClassReflectionExtensi
         if (!array_filter($this->getContainingClassNames(), [$classReflection, 'is'])) {
             return false;
         }
+
+
 
         $isDefinedInComponentsProperty = (bool) array_filter(
             $this->getDefinedComponentsAsList($classReflection),
@@ -76,7 +82,7 @@ final class ClassComponentsExtension implements PropertiesClassReflectionExtensi
         $definedComponents = [];
 
         foreach (array_merge([$classReflection], $classReflection->getParents()) as $class) {
-            if (!$class->hasProperty('components')) {
+            if (! $class->hasProperty('components')) {
                 continue;
             }
 

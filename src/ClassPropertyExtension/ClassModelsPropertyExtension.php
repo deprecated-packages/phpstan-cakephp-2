@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ClassPropertyExtension;
 
 /**
- * Adds {@link Model}s as properties to {@link Shell}s.
+ * Adds {@link Model}s as properties to {@link Shell}s
  */
-final class ClassTasksExtension extends ClassPropertiesExtension
+final class ClassModelsPropertyExtension extends AbstractClassPropertyExtension
 {
     protected function getPropertyParentClassName(): string
     {
-        return 'Shell';
+        return 'Model';
     }
 
     /**
@@ -19,12 +19,16 @@ final class ClassTasksExtension extends ClassPropertiesExtension
      */
     protected function getContainingClassNames(): array
     {
-        return ['Shell'];
+        return [
+            'Controller',
+            'Model',
+            'Shell',
+        ];
     }
 
     protected function getClassNameFromPropertyName(
         string $propertyName
     ): string {
-        return $propertyName . 'Task';
+        return $propertyName;
     }
 }

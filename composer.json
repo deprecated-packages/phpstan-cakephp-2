@@ -1,66 +1,43 @@
 {
-    "name": "sidz/phpstan-cakephp2",
-    "description": "An extension to help test CakePHP 2 projects with PHPStan",
+    "name": "tomasvotruba/phpstan-cakephp-2",
+    "description": "PHPStan extension for CakePHP 2",
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Oleg Zhulnev",
-            "email": "plbsid@gmail.com"
-        }
-    ],
     "require": {
-        "php": "^7.4",
-        "phpstan/phpstan": "^1.9"
+        "php": "^8.0",
+        "phpstan/phpstan": "^1.10"
     },
     "require-dev": {
-        "cakephp/cakephp": "^2.10.24",
         "phpstan/phpstan-phpunit": "^1.3",
-        "phpunit/phpunit": "^9.6",
-        "nunomaduro/phpinsights": "^2.7"
+        "phpunit/phpunit": "^10.5",
+        "phpstan/extension-installer": "^1.3",
+        "tracy/tracy": "^2.10",
+        "symplify/easy-coding-standard": "^12.1"
     },
     "autoload": {
         "psr-4": {
-            "PHPStanCakePHP2\\": "src/"
+            "PHPStanCakePHP2\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PHPStanCakePHP2\\Test\\": "tests/"
+            "PHPStanCakePHP2\\Tests\\": "tests"
         },
         "classmap": [
-            "tests/Feature/classes",
-            "vendor/cakephp/cakephp/lib/Cake/Cache",
-            "vendor/cakephp/cakephp/lib/Cake/Config",
-            "vendor/cakephp/cakephp/lib/Cake/Console/Shell.php",
-            "vendor/cakephp/cakephp/lib/Cake/Core",
-            "vendor/cakephp/cakephp/lib/Cake/Controller",
-            "vendor/cakephp/cakephp/lib/Cake/Event",
-            "vendor/cakephp/cakephp/lib/Cake/Model",
-            "vendor/cakephp/cakephp/lib/Cake/Utility",
-            "vendor/cakephp/cakephp/lib/Cake/View"
-        ]
-    },
-    "scripts": {
-        "phpinsights": "phpinsights analyse --no-interaction --ansi --config-path=phpinsights.php --summary src",
-        "phpinsights-github": "phpinsights analyse --no-interaction --ansi --config-path=phpinsights.php --format=github-action src",
-        "phpstan": "phpstan",
-        "phpunit": "phpunit",
-        "test": [
-            "@phpunit",
-            "@phpstan",
-            "@phpinsights"
+            "stubs",
+            "tests/Feature/classes"
         ]
     },
     "extra": {
         "phpstan": {
             "includes": [
-                "extension.neon"
+                "config/extension.neon"
             ]
         }
     },
     "config": {
         "allow-plugins": {
+            "phpstan/extension-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }

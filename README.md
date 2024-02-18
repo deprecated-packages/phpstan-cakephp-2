@@ -1,40 +1,30 @@
-# PHPStan-CakePHP2
+# PHPStan extension for CakePHP 2
+
 PHPStan extensions to help test CakePHP 2 projects with PHPStan
 
-## Requirements
-
-* PHP 7.4
-* phpstan/phpstan 1.9+
-* cakephp/cakephp 2.x
+<br>
 
 ## Installation
 
-Installation is best done through composer:
 ```shell
-composer require --dev sidz/phpstan-cakephp2
-```
-
-You will need to make sure the extension is included in your phpstan config:
-```yaml
-# phpstan.neon
-includes:
-  - vendor/sidz/phpstan-cakephp2/extension.neon
+composer require tomasvotruba/phpstan-cakephp-2 --dev
 ```
 
 If you have behavior classes in odd locations (perhaps in a vendor directory) you will need to add those locations to
 your configuration. For example:
+
 ```yaml
 # phpstan.neon
 parameters:
-  ModelBehaviorsExtension:
     behaviorPaths:
-      - vendor/my-vendor/my-plugin/src/Model/Behavior/*.php
+        - vendor/my-vendor/my-plugin/src/Model/Behavior/*.php
 ```
+
 See `extension.neon` for the default list of behavior locations.
 
-## Features
+<br>
 
-The following features are added to PHPStan:
+## Features
 
 * Treat behavior methods as extra methods on all models (`$model->behaviorMethod()`)
 * Treat controller properties named after model classes as instances of those classes (`$controller->Model`)

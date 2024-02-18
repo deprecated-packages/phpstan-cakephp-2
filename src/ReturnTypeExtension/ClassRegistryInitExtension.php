@@ -2,29 +2,26 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ReturnTypeExtension;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Expr\ClassConstFetch;
-use PhpParser\Node\Expr\Variable;
-use PhpParser\Node\Name;
-use PhpParser\Node\Scalar\String_;
-use PHPStan\Type\Constant\ConstantStringType;
-use PHPStanCakePHP2\Service\SchemaService;
-use Inflector;
-use PhpParser\ConstExprEvaluator;
 use PhpParser\Node\Expr\StaticCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Type\BooleanType;
+use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicStaticMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\ObjectWithoutClassType;
 use PHPStan\Type\Type;
 use PHPStan\Type\UnionType;
+use PHPStanCakePHP2\CakePHP\PortedInflector;
+use PHPStanCakePHP2\Service\SchemaService;
 
-class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
+/**
+ * @see \PHPStanCakePHP2\Tests\ReturnTypeExtension\ClassRegistryInitExtension\ClassRegistryInitExtensionTest
+ */
+final class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
 {
     private ReflectionProvider $reflectionProvider;
 
@@ -32,8 +29,8 @@ class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtensi
 
     public function __construct(
         ReflectionProvider $reflectionProvider,
-        SchemaService $schemaService)
-    {
+        SchemaService $schemaService
+    ) {
         $this->reflectionProvider = $reflectionProvider;
         $this->schemaService = $schemaService;
     }
@@ -62,7 +59,8 @@ class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtensi
             return new ObjectType($value);
         }
 
-        if ($this->schemaService->hasTable(Inflector::tableize($value))) {
+        $tableName = PortedInflector::tableize($value);
+        if ($this->schemaService->hasTable($tableName)) {
             return new ObjectType('Model');
         }
 

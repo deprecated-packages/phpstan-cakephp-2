@@ -9,6 +9,7 @@ use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStanCakePHP2\Reflection\ClassReflectionFinder;
 
 /**
  * Adds methods to {@link Model}s from {@link ModelBehavior} classes.
