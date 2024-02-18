@@ -11,6 +11,7 @@ parameters:
   stubFiles:
     - stubs/Routing/Router.stub
     - stubs/Utility.stub
+
 services:
   - class: PHPStanCakePHP2\ClassComponentsExtension
     tags:
@@ -35,6 +36,7 @@ services:
   - class: PHPStanCakePHP2\LoadComponentOnFlyMethodReturnTypeExtension
     tags:
       - phpstan.broker.dynamicMethodReturnTypeExtension
+
 parametersSchema:
   ModelBehaviorsExtension: structure([
     behaviorPaths: listOf(string())

@@ -4,3 +4,6 @@
 .phpunit.cache
 composer.lock
 composer.phar
+
+
+.phpunit.result.cache

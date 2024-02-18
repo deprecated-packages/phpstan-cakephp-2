@@ -32,14 +32,6 @@
             "tests/Feature/classes"
         ]
     },
-    "scripts": {
-        "phpstan": "phpstan",
-        "phpunit": "phpunit",
-        "test": [
-            "@phpunit",
-            "@phpstan"
-        ]
-    },
     "extra": {
         "phpstan": {
             "includes": [
