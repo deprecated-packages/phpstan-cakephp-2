@@ -21,7 +21,7 @@ services:
     tags:
       - phpstan.broker.propertiesClassReflectionExtension
 
-  - class: PHPStanCakePHP2\ClassRegistryInitExtension
+  - class: PHPStanCakePHP2\ReturnTypeExtension\ClassRegistryInitExtension
     tags:
       - phpstan.broker.dynamicStaticMethodReturnTypeExtension
 
