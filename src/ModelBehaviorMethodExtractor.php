@@ -69,7 +69,7 @@ final class ModelBehaviorMethodExtractor
         ExtendedMethodReflection $methodReflection
     ): bool {
         return $methodReflection->isPublic()
-            && ! $methodReflection->isStatic()
+            && !$methodReflection->isStatic()
             && array_filter(
                 $methodReflection->getVariants(),
                 [$this, 'filterBehaviorMethodVariants']
@@ -87,7 +87,7 @@ final class ModelBehaviorMethodExtractor
         /** @var ParameterReflection|null $firstParameter */
         $firstParameter = array_shift($parameters);
 
-        if (! $firstParameter) {
+        if (!$firstParameter) {
             return false;
         }
 

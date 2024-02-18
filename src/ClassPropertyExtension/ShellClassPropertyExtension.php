@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\ClassPropertyExtension;
 
-
 /**
  * Adds {@link Model}s as properties to {@link Shell}s.
  *

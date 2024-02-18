@@ -61,7 +61,7 @@ final class ClassReflectionFinder
         $classPaths = [];
         foreach ($paths as $path) {
             $filePaths = glob($path);
-            if (! is_array($filePaths)) {
+            if (!is_array($filePaths)) {
                 throw new Exception(sprintf('glob(%s) caused an error', $path));
             }
             $classPaths = array_merge($classPaths, $filePaths);
