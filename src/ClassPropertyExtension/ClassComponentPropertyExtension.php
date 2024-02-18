@@ -28,7 +28,7 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
 
     public function hasProperty(ClassReflection $classReflection, string $propertyName): bool
     {
-        if (!array_filter($this->getContainingClassNames(), [$classReflection, 'is'])) {
+        if (! array_filter($this->getContainingClassNames(), [$classReflection, 'is'])) {
             return false;
         }
 
@@ -37,7 +37,7 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
             static fn (string $componentName): bool => $componentName === $propertyName
         );
 
-        if (!$isDefinedInComponentsProperty) {
+        if (! $isDefinedInComponentsProperty) {
             return false;
         }
 
@@ -80,7 +80,7 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
         $definedComponents = [];
 
         foreach (array_merge([$classReflection], $classReflection->getParents()) as $class) {
-            if (!$class->hasProperty('components')) {
+            if (! $class->hasProperty('components')) {
                 continue;
             }
 
@@ -88,7 +88,7 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
                 ->getNativeReflection()
                 ->getDefaultValueExpression();
 
-            if (!$defaultValue instanceof Array_) {
+            if (! $defaultValue instanceof Array_) {
                 continue;
             }
 

@@ -14,8 +14,8 @@ final class PortedInflector
      *
      * @var array<string, mixed[]>
      */
-    protected static $_plural = array(
-        'rules' => array(
+    private static $_plural = [
+        'rules' => [
             '/(s)tatus$/i' => '\1tatuses',
             '/(quiz)$/i' => '\1zes',
             '/^(ox)$/i' => '\1\2en',
@@ -38,8 +38,8 @@ final class PortedInflector
             '/s$/' => 's',
             '/^$/' => '',
             '/$/' => 's',
-        ),
-        'uninflected' => array(
+        ],
+        'uninflected' => [
             '.*[nrlm]ese',
             '.*data',
             '.*deer',
@@ -50,9 +50,9 @@ final class PortedInflector
             '.*sheep',
             'people',
             'feedback',
-            'stadia'
-        ),
-        'irregular' => array(
+            'stadia',
+        ],
+        'irregular' => [
             'atlas' => 'atlases',
             'beef' => 'beefs',
             'brief' => 'briefs',
@@ -92,16 +92,16 @@ final class PortedInflector
             'tooth' => 'teeth',
             'goose' => 'geese',
             'foot' => 'feet',
-            'sieve' => 'sieves'
-        )
-    );
+            'sieve' => 'sieves',
+        ],
+    ];
 
     /**
      * Words that should not be inflected
      *
      * @var array
      */
-    protected static $_uninflected = array(
+    private static $_uninflected = [
         'Amoyese',
         'bison',
         'Borghese',
@@ -181,15 +181,15 @@ final class PortedInflector
         'Wenchowese',
         'whiting',
         'wildebeest',
-        'Yengeese'
-    );
+        'Yengeese',
+    ];
 
     /**
      * Method cache array.
      *
      * @var array
      */
-    protected static $_cache = array();
+    private static $_cache = [];
 
     /**
      * Returns corresponding table name for given model $className. ("people" for the model class "Person").
@@ -200,7 +200,7 @@ final class PortedInflector
      */
     public static function tableize($className)
     {
-        return PortedInflector::pluralize(PortedInflector::underscore($className));
+        return self::pluralize(self::underscore($className));
     }
 
     /**
@@ -216,18 +216,18 @@ final class PortedInflector
             return static::$_cache['pluralize'][$word];
         }
 
-        if (!isset(static::$_plural['merged']['irregular'])) {
+        if (! isset(static::$_plural['merged']['irregular'])) {
             static::$_plural['merged']['irregular'] = static::$_plural['irregular'];
         }
 
-        if (!isset(static::$_plural['merged']['uninflected'])) {
+        if (! isset(static::$_plural['merged']['uninflected'])) {
             static::$_plural['merged']['uninflected'] = array_merge(
                 static::$_plural['uninflected'],
                 static::$_uninflected
             );
         }
 
-        if (!isset(static::$_plural['cacheUninflected']) || !isset(static::$_plural['cacheIrregular'])) {
+        if (! isset(static::$_plural['cacheUninflected']) || ! isset(static::$_plural['cacheIrregular'])) {
             static::$_plural['cacheUninflected'] = '(?:' . implode(
                 '|',
                 static::$_plural['merged']['uninflected']

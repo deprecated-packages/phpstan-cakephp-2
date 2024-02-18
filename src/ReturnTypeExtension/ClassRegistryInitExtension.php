@@ -49,7 +49,7 @@ final class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeE
     {
         $argumentType = $scope->getType($methodCall->getArgs()[0]->value);
 
-        if (!$argumentType instanceof ConstantStringType) {
+        if (! $argumentType instanceof ConstantStringType) {
             return $this->getDefaultType();
         }
 

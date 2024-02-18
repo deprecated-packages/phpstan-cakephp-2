@@ -70,7 +70,7 @@ final class ModelMethodExtension implements MethodsClassReflectionExtension
                 return $methodReflection->getName() === $methodName;
             }
         );
-        if (!$methodReflections) {
+        if (! $methodReflections) {
             throw new Exception('Method not found');
         }
         return reset($methodReflections);
