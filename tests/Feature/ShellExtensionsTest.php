@@ -5,9 +5,16 @@ declare(strict_types=1);
 namespace PHPStanCakePHP2\Test\Feature;
 
 use PHPStan\Testing\TypeInferenceTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class ShellExtensionsTest extends TypeInferenceTestCase
 {
+    #[DataProvider('dataFileAsserts')]
+    public function testShellExtensions(string $assertType, string $file, ...$args): void
+    {
+        $this->assertFileAsserts($assertType, $file, ...$args);
+    }
+
     /**
      * @return mixed[]
      */
@@ -18,19 +25,8 @@ final class ShellExtensionsTest extends TypeInferenceTestCase
         yield from self::gatherAssertTypes(__DIR__ . '/data/invalid_shell_property.php');
     }
 
-    /**
-     * @dataProvider dataFileAsserts
-     * @param mixed $args
-     */
-    public function testShellExtensions(string $assertType, string $file, ...$args): void
-    {
-        $this->assertFileAsserts($assertType, $file, ...$args);
-    }
-
     public static function getAdditionalConfigFiles(): array
     {
-        return [
-            __DIR__ . '/data/phpstan.neon',
-        ];
+        return [__DIR__ . '/data/phpstan.neon'];
     }
 }

@@ -1,38 +1,44 @@
 parameters:
   ModelBehaviorsExtension:
     behaviorPaths:
-      - vendor/cakephp/cakephp/lib/Cake/Model/Behavior/*.php
-      - lib/Cake/Model/Behavior/*.php
-      - app/Plugin/*/Model/Behavior/*.php
-      - app/Model/Behavior/*.php
+      - ../vendor/cakephp/cakephp/lib/Cake/Model/Behavior/*.php
+      - ../lib/Cake/Model/Behavior/*.php
+      - ../app/Plugin/*/Model/Behavior/*.php
+      - ../app/Model/Behavior/*.php
   SchemaService:
     schemaPaths:
-      - app/Config/Schema/*.php
+      - ../app/Config/Schema/*.php
   stubFiles:
-    - stubs/Routing/Router.stub
-    - stubs/Utility.stub
+    - ../stubs/Routing/Router.stub
+    - ../stubs/Utility.stub
 
 services:
   - class: PHPStanCakePHP2\ClassComponentsExtension
     tags:
       - phpstan.broker.propertiesClassReflectionExtension
+
   - class: PHPStanCakePHP2\ClassModelsExtension
     tags:
       - phpstan.broker.propertiesClassReflectionExtension
+
   - class: PHPStanCakePHP2\ClassRegistryInitExtension
     tags:
       - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+
   - class: PHPStanCakePHP2\ClassTasksExtension
     tags:
       - phpstan.broker.propertiesClassReflectionExtension
+
   - class: PHPStanCakePHP2\ModelBehaviorsExtension
     arguments:
       behaviorPaths: %ModelBehaviorsExtension.behaviorPaths%
     tags:
       - phpstan.broker.methodsClassReflectionExtension
+
   - class: PHPStanCakePHP2\Service\SchemaService
     arguments:
       schemaPaths: %SchemaService.schemaPaths%
+
   - class: PHPStanCakePHP2\LoadComponentOnFlyMethodReturnTypeExtension
     tags:
       - phpstan.broker.dynamicMethodReturnTypeExtension
