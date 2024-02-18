@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\Reflection;
 
 use Exception;
 use PHPStan\Reflection\ClassReflection;

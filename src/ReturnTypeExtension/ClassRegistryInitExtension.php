@@ -21,8 +21,7 @@ use PHPStanCakePHP2\Service\SchemaService;
 /**
  * @see \PHPStanCakePHP2\Tests\ReturnTypeExtension\ClassRegistryInitExtension\ClassRegistryInitExtensionTest
  */
-final class
-ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
+final class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
 {
     private ReflectionProvider $reflectionProvider;
 
@@ -60,20 +59,8 @@ ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
             return new ObjectType($value);
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/ClassRegistryInitExtension.php
-        if ($this->schemaService->hasTable(PortedInflector::tableize($value))) {
-=======
         $tableName = PortedInflector::tableize($value);
         if ($this->schemaService->hasTable($tableName)) {
->>>>>>> e0614d1 (fixup! misc):src/ReturnTypeExtension/ClassRegistryInitExtension.php
-=======
-        $tableName = PortedInflector::tableize($value);
-
-        var_dump($tableName);
-
-        if ($this->schemaService->hasTable($tableName)) {
->>>>>>> 7e16f7f (tidy up)
             return new ObjectType('Model');
         }
 

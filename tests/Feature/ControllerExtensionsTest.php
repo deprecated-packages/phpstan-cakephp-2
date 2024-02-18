@@ -22,7 +22,7 @@ class ControllerExtensionsTest extends TypeInferenceTestCase
     }
 
     #[DataProvider('dataFileAsserts')]
-    public function testControllerExtensions(string $assertType, string $file, ...$args): void
+    public function test(string $assertType, string $file, ...$args): void
     {
         $this->assertFileAsserts($assertType, $file, ...$args);
     }

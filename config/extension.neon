@@ -16,21 +16,21 @@ parameters:
         - ../stubs/Utility.stub
 
 services:
-#    -
-#        class: PHPStanCakePHP2\ClassComponentsExtension
-#        tags:
-#            - phpstan.broker.propertiesClassReflectionExtension
-#
-#    -
-#        class: PHPStanCakePHP2\ClassModelsExtension
-#        tags:
-#            - phpstan.broker.propertiesClassReflectionExtension
-#
-#    # checked
-#    -
-#        class: PHPStanCakePHP2\ReturnTypeExtension\ClassRegistryInitExtension
-#        tags:
-#            - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+    -
+        class: PHPStanCakePHP2\ClassPropertyExtension\ClassComponentPropertyExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension
+
+    -
+        class: PHPStanCakePHP2\ClassPropertyExtension\ClassModelsPropertyExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension
+
+    # checked
+    -
+        class: PHPStanCakePHP2\ReturnTypeExtension\ClassRegistryInitExtension
+        tags:
+            - phpstan.broker.dynamicStaticMethodReturnTypeExtension
 
     # checked
     -
@@ -38,20 +38,20 @@ services:
         tags:
             - phpstan.broker.propertiesClassReflectionExtension
 
-#    -
-#        class: PHPStanCakePHP2\ModelBehaviorsExtension
-#        arguments:
-#            behaviorPaths: %behaviorPaths%
-#        tags:
-#            - phpstan.broker.methodsClassReflectionExtension
+    -
+        class: PHPStanCakePHP2\ModelBehaviorsExtension
+        arguments:
+            behaviorPaths: %behaviorPaths%
+        tags:
+            - phpstan.broker.methodsClassReflectionExtension
 
-#    -
-#        class: PHPStanCakePHP2\Service\SchemaService
-#        arguments:
-#            schemaPaths: %schemaPaths%
-#
-#    -
-#        class: PHPStanCakePHP2\LoadComponentOnFlyMethodReturnTypeExtension
-#        tags:
-#            - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+        class: PHPStanCakePHP2\Service\SchemaService
+        arguments:
+            schemaPaths: %schemaPaths%
+
+    -
+        class: PHPStanCakePHP2\LoadComponentOnFlyMethodReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
 

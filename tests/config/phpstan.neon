@@ -2,6 +2,7 @@ parameters:
     behaviorPaths:
         - tests/Feature/classes/Model/Behavior/*.php
 
+    # @todo add exists validatoin to avoid misspaths
     schemaPaths:
         - tests/Feature/classes/Config/Schema/*.php
 

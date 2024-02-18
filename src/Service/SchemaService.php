@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\Service;
 
-use PHPStanCakePHP2\ClassReflectionFinder;
 use Exception;
 use PHPStan\BetterReflection\Reflection\Adapter\ReflectionProperty;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStanCakePHP2\Reflection\ClassReflectionFinder;
 use ReflectionProperty as CoreReflectionProperty;
 
 /**

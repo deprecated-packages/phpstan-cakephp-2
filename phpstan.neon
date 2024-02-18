@@ -10,17 +10,7 @@ parameters:
         - */Fixture/*
         # ported from cacke
         - src/CakePHP/PortedInflector.php
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
     ignoreErrors:
         # not practical as mixed
         - '#Method (.*?)::test(.*?)\(\) has parameter \$args with no type specified#'
->>>>>>> 514d1ac (fixup! mics)
-=======
-
-    ignoreErrors:
-        # not practical as mixed
-        - '#Method PHPStanCakePHP2\\Tests\\(.*?)::test(.*?)\(\) has parameter \$args with no type specified#'
->>>>>>> 9d38081 (misc)
