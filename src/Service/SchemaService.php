@@ -31,7 +31,6 @@ final class SchemaService
     private ?array $tableSchemas = null;
 
     /**
-     * @param ReflectionProvider $reflectionProvider
      * @param array<string> $schemaPaths
      */
     public function __construct(

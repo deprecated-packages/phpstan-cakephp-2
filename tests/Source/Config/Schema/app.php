@@ -7,28 +7,38 @@ class AppSchema extends CakeSchema
     /**
      * @var array<string, mixed>
      */
-    public $basic_models = array(
-        'id' => array(
+    public $basic_models = [
+        'id' => [
             'type' => 'integer',
             'null' => false,
             'default' => null,
             'length' => 10,
             'key' => 'primary',
-        ),
-        'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
-    );
+        ],
+        'indexes' => [
+            'PRIMARY' => [
+                'column' => 'id',
+                'unique' => 1,
+            ],
+        ],
+    ];
 
     /**
      * @var array<string, mixed>
      */
-    public $table_without_models = array(
-        'id' => array(
+    public $table_without_models = [
+        'id' => [
             'type' => 'integer',
             'null' => false,
             'default' => null,
             'length' => 10,
             'key' => 'primary',
-        ),
-        'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
-    );
+        ],
+        'indexes' => [
+            'PRIMARY' => [
+                'column' => 'id',
+                'unique' => 1,
+            ],
+        ],
+    ];
 }

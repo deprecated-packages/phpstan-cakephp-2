@@ -36,17 +36,17 @@ final class LoadComponentOnFlyMethodReturnTypeExtension implements DynamicMethod
     {
         $arg = $methodCall->getArgs()[0]->value;
 
-        if (!$arg instanceof String_) {
+        if (! $arg instanceof String_) {
             return null;
         }
 
         $componentName = $arg->value . 'Component';
 
-        if (!$this->reflectionProvider->hasClass($componentName)) {
+        if (! $this->reflectionProvider->hasClass($componentName)) {
             return null;
         }
 
-        if (!$this->reflectionProvider->getClass($componentName)->is('Component')) {
+        if (! $this->reflectionProvider->getClass($componentName)->is('Component')) {
             return null;
         }
 
