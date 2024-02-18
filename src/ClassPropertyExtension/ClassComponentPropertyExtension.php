@@ -28,9 +28,6 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
 
     public function hasProperty(ClassReflection $classReflection, string $propertyName): bool
     {
-        var_dump(111);
-        die;
-
         if (!array_filter($this->getContainingClassNames(), [$classReflection, 'is'])) {
             return false;
         }
@@ -45,11 +42,6 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
         }
 
         $propertyClassName = $this->getClassNameFromPropertyName($propertyName);
-
-        var_dump($propertyClassName);
-        var_dump($this->reflectionProvider->hasClass($propertyClassName));
-
-        die;
 
         return $this->reflectionProvider->hasClass($propertyClassName)
             && $this->reflectionProvider->getClass($propertyClassName)
