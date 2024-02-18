@@ -1,5 +1,5 @@
 {
-    "name": "sidz/phpstan-cakephp2",
+    "name": "tomasvotruba/phpstan-cakephp2",
     "description": "An extension to help test CakePHP 2 projects with PHPStan",
     "type": "library",
     "license": "MIT",
@@ -10,14 +10,13 @@
         }
     ],
     "require": {
-        "php": "^7.4",
-        "phpstan/phpstan": "^1.9"
+        "php": "^7.4|^8.0",
+        "phpstan/phpstan": "^1.9",
+        "doctrine/inflector": "^2.0"
     },
     "require-dev": {
-        "cakephp/cakephp": "^2.10.24",
         "phpstan/phpstan-phpunit": "^1.3",
-        "phpunit/phpunit": "^9.6",
-        "nunomaduro/phpinsights": "^2.7"
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {
@@ -29,27 +28,16 @@
             "PHPStanCakePHP2\\Test\\": "tests/"
         },
         "classmap": [
-            "tests/Feature/classes",
-            "vendor/cakephp/cakephp/lib/Cake/Cache",
-            "vendor/cakephp/cakephp/lib/Cake/Config",
-            "vendor/cakephp/cakephp/lib/Cake/Console/Shell.php",
-            "vendor/cakephp/cakephp/lib/Cake/Core",
-            "vendor/cakephp/cakephp/lib/Cake/Controller",
-            "vendor/cakephp/cakephp/lib/Cake/Event",
-            "vendor/cakephp/cakephp/lib/Cake/Model",
-            "vendor/cakephp/cakephp/lib/Cake/Utility",
-            "vendor/cakephp/cakephp/lib/Cake/View"
+            "stubs",
+            "tests/Feature/classes"
         ]
     },
     "scripts": {
-        "phpinsights": "phpinsights analyse --no-interaction --ansi --config-path=phpinsights.php --summary src",
-        "phpinsights-github": "phpinsights analyse --no-interaction --ansi --config-path=phpinsights.php --format=github-action src",
         "phpstan": "phpstan",
         "phpunit": "phpunit",
         "test": [
             "@phpunit",
-            "@phpstan",
-            "@phpinsights"
+            "@phpstan"
         ]
     },
     "extra": {
@@ -57,11 +45,6 @@
             "includes": [
                 "extension.neon"
             ]
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }
