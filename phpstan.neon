@@ -1,7 +1,11 @@
 parameters:
-  level: 9
-  paths:
-    - src
-    - tests
-  excludePaths:
-    - tests/Feature/data/*
+    level: 8
+
+    paths:
+        - src
+        - tests
+
+    excludePaths:
+        - tests/Feature/data/*
+        # ported from cacke
+        - src/CakePHP/PortedInflector.php

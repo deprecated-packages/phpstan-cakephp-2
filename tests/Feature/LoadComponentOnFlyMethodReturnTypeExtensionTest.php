@@ -11,7 +11,7 @@ class LoadComponentOnFlyMethodReturnTypeExtensionTest extends TypeInferenceTestC
     /**
      * @return mixed[]
      */
-    public function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): iterable
     {
         yield from self::gatherAssertTypes(__DIR__ . '/data/loading_component_loaded_on_fly.php');
     }

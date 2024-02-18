@@ -10,8 +10,8 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar\String_;
 use PHPStan\Type\Constant\ConstantStringType;
+use PHPStanCakePHP2\CakePHP\PortedInflector;
 use PHPStanCakePHP2\Service\SchemaService;
-use Inflector;
 use PhpParser\ConstExprEvaluator;
 use PhpParser\Node\Expr\StaticCall;
 use PHPStan\Analyser\Scope;
@@ -62,7 +62,7 @@ class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtensi
             return new ObjectType($value);
         }
 
-        if ($this->schemaService->hasTable(Inflector::tableize($value))) {
+        if ($this->schemaService->hasTable(PortedInflector::tableize($value))) {
             return new ObjectType('Model');
         }
 

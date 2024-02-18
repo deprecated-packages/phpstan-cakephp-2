@@ -11,12 +11,12 @@ class ModelExtensionsTest extends TypeInferenceTestCase
     /**
      * @return mixed[]
      */
-    public function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): iterable
     {
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/core_model_behavior.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/custom_model_behavior.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/invalid_model_property.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_model_model.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/core_model_behavior.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/custom_model_behavior.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/invalid_model_property.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_model_model.php');
     }
 
     /**

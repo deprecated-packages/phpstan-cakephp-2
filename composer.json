@@ -11,12 +11,11 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "phpstan/phpstan": "^1.9",
-        "doctrine/inflector": "^2.0"
+        "phpstan/phpstan": "^1.9"
     },
     "require-dev": {
         "phpstan/phpstan-phpunit": "^1.3",
-        "phpunit/phpunit": "^9.6"
+        "phpunit/phpunit": "^10.5"
     },
     "autoload": {
         "psr-4": {

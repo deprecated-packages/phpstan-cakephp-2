@@ -6,16 +6,16 @@ namespace PHPStanCakePHP2\Test\Feature;
 
 use PHPStan\Testing\TypeInferenceTestCase;
 
-class ShellExtensionsTest extends TypeInferenceTestCase
+final class ShellExtensionsTest extends TypeInferenceTestCase
 {
     /**
      * @return mixed[]
      */
-    public function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): iterable
     {
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_shell_model.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_shell_task.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/invalid_shell_property.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_shell_model.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_shell_task.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/invalid_shell_property.php');
     }
 
     /**

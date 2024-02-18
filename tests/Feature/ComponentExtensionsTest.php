@@ -11,10 +11,10 @@ class ComponentExtensionsTest extends TypeInferenceTestCase
     /**
      * @return mixed[]
      */
-    public function dataFileAsserts(): iterable
+    public static function dataFileAsserts(): iterable
     {
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/existing_component_component.php');
-        yield from $this->gatherAssertTypes(__DIR__ . '/data/invalid_component_property.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_component_component.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/data/invalid_component_property.php');
     }
 
     /**
