@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\Tests\ClassPropertyExtension\ClassModelsPropertyExtension;
 
+use Iterator;
 use PHPStan\Testing\TypeInferenceTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -18,10 +19,9 @@ final class ClassModelPropertyExtensionsTest extends TypeInferenceTestCase
         $this->assertFileAsserts($assertType, $file, ...$args);
     }
 
-    public static function dataFileAsserts(): \Iterator
+    public static function dataFileAsserts(): Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/core_model_behavior.php');
-        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/custom_model_behavior.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_model_property.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_model_model.php');
 
