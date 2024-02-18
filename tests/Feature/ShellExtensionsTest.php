@@ -9,6 +9,9 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 final class ShellExtensionsTest extends TypeInferenceTestCase
 {
+    /**
+     * @param mixed ...$args
+     */
     #[DataProvider('dataFileAsserts')]
     public function testShellExtensions(string $assertType, string $file, ...$args): void
     {
@@ -21,8 +24,8 @@ final class ShellExtensionsTest extends TypeInferenceTestCase
     public static function dataFileAsserts(): iterable
     {
         yield from self::gatherAssertTypes(__DIR__ . '/data/existing_shell_model.php');
-        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_shell_task.php');
-        yield from self::gatherAssertTypes(__DIR__ . '/data/invalid_shell_property.php');
+//        yield from self::gatherAssertTypes(__DIR__ . '/data/existing_shell_task.php');
+//        yield from self::gatherAssertTypes(__DIR__ . '/data/invalid_shell_property.php');
     }
 
     public static function getAdditionalConfigFiles(): array

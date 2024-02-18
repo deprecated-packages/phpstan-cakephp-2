@@ -1,9 +1,9 @@
+# IDE
 /.idea/
-/phpstan/
-/vendor/
-.phpunit.cache
+
+# composer
+/vendor
 composer.lock
-composer.phar
 
-
+# tests
 .phpunit.result.cache

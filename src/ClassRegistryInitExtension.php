@@ -4,15 +4,9 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Expr\ClassConstFetch;
-use PhpParser\Node\Expr\Variable;
-use PhpParser\Node\Name;
-use PhpParser\Node\Scalar\String_;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStanCakePHP2\CakePHP\PortedInflector;
 use PHPStanCakePHP2\Service\SchemaService;
-use PhpParser\ConstExprEvaluator;
 use PhpParser\Node\Expr\StaticCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
@@ -24,7 +18,10 @@ use PHPStan\Type\ObjectWithoutClassType;
 use PHPStan\Type\Type;
 use PHPStan\Type\UnionType;
 
-class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
+/**
+ * @see \PHPStanCakePHP2\Test\Feature\ClassRegistryInitTest
+ */
+final class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtension
 {
     private ReflectionProvider $reflectionProvider;
 
@@ -32,8 +29,8 @@ class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtensi
 
     public function __construct(
         ReflectionProvider $reflectionProvider,
-        SchemaService $schemaService)
-    {
+        SchemaService $schemaService
+    ) {
         $this->reflectionProvider = $reflectionProvider;
         $this->schemaService = $schemaService;
     }
@@ -62,7 +59,20 @@ class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeExtensi
             return new ObjectType($value);
         }
 
+<<<<<<< HEAD
+<<<<<<< HEAD:src/ClassRegistryInitExtension.php
         if ($this->schemaService->hasTable(PortedInflector::tableize($value))) {
+=======
+        $tableName = PortedInflector::tableize($value);
+        if ($this->schemaService->hasTable($tableName)) {
+>>>>>>> e0614d1 (fixup! misc):src/ReturnTypeExtension/ClassRegistryInitExtension.php
+=======
+        $tableName = PortedInflector::tableize($value);
+
+        var_dump($tableName);
+
+        if ($this->schemaService->hasTable($tableName)) {
+>>>>>>> 7e16f7f (tidy up)
             return new ObjectType('Model');
         }
 

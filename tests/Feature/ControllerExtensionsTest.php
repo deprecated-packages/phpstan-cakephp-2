@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPStanCakePHP2\Test\Feature;
 
 use PHPStan\Testing\TypeInferenceTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ControllerExtensionsTest extends TypeInferenceTestCase
 {
@@ -20,10 +21,7 @@ class ControllerExtensionsTest extends TypeInferenceTestCase
         yield from self::gatherAssertTypes(__DIR__ . '/data/existing_controller_component_from_parent_controller.php');
     }
 
-    /**
-     * @dataProvider dataFileAsserts
-     * @param mixed $args
-     */
+    #[DataProvider('dataFileAsserts')]
     public function testControllerExtensions(string $assertType, string $file, ...$args): void
     {
         $this->assertFileAsserts($assertType, $file, ...$args);

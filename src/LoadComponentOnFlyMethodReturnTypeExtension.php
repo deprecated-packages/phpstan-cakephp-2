@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2;
 
-use Component;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
 use PHPStan\Analyser\Scope;
@@ -25,7 +24,7 @@ class LoadComponentOnFlyMethodReturnTypeExtension implements DynamicMethodReturn
 
     public function getClass(): string
     {
-        return \ComponentCollection::class;
+        return 'ComponentCollection';
     }
 
     public function isMethodSupported(MethodReflection $methodReflection): bool
@@ -47,7 +46,7 @@ class LoadComponentOnFlyMethodReturnTypeExtension implements DynamicMethodReturn
             return null;
         }
 
-        if (!$this->reflectionProvider->getClass($componentName)->is(Component::class)) {
+        if (!$this->reflectionProvider->getClass($componentName)->is('Component')) {
             return null;
         }
 
