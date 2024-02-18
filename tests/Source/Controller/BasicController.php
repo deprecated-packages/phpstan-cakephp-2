@@ -1,5 +1,7 @@
 <?php
 
+use Controller;
+
 class BasicController extends Controller
 {
     /**

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ClassPropertyExtension\ClassModelsPropertyExtension;
+namespace PHPStanCakePHP2\Tests\ClassPropertyExtension\ClassModelsPropertyExtension;
 
 use PHPStan\Testing\TypeInferenceTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -18,15 +18,15 @@ final class ClassModelPropertyExtensionsTest extends TypeInferenceTestCase
         $this->assertFileAsserts($assertType, $file, ...$args);
     }
 
-    /**
-     * @return mixed[]
-     */
     public static function dataFileAsserts(): \Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/core_model_behavior.php');
-//        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/custom_model_behavior.php');
-//        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_model_property.php');
-//        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_model_model.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/custom_model_behavior.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_model_property.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_model_model.php');
+
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_model.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_controller_property.php');
     }
 
     /**

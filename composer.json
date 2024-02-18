@@ -25,7 +25,7 @@
         },
         "classmap": [
             "stubs",
-            "tests/Feature/classes"
+            "tests/Source"
         ]
     },
     "extra": {
@@ -34,6 +34,11 @@
                 "config/extension.neon"
             ]
         }
+    },
+    "scripts": {
+        "fix-cs": "vendor/bin/ecs check src tests --fix",
+        "check-cs": "vendor/bin/ecs check src tests",
+        "phpstan": "vendor/bin/phpstan"
     },
     "config": {
         "allow-plugins": {

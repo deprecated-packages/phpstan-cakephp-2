@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ClassPropertyExtension\ClassComponentPropertyExtension;
+namespace PHPStanCakePHP2\Tests\ClassPropertyExtension\ClassComponentPropertyExtension;
 
+use Iterator;
 use PHPStan\Testing\TypeInferenceTestCase;
 use PHPStanCakePHP2\ClassPropertyExtension\ClassComponentPropertyExtension;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -19,13 +20,14 @@ final class ClassComponentPropertyExtensionTest extends TypeInferenceTestCase
         $this->assertFileAsserts($assertType, $file, ...$args);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public static function dataFileAsserts(): \Iterator
+    public static function dataFileAsserts(): Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_component_component.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_component_property.php');
+
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component_from_parent_controller.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component_with_same_method_name_as_model.php');
     }
 
     public static function getAdditionalConfigFiles(): array

@@ -2,19 +2,20 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ClassMethodExtension;
 
 use Exception;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStanCakePHP2\ModelBehaviorMethodExtractor;
 use PHPStanCakePHP2\Reflection\ClassReflectionFinder;
 
 /**
  * Adds methods to {@link Model}s from {@link ModelBehavior} classes.
  */
-final class ModelBehaviorsExtension implements MethodsClassReflectionExtension
+final class ModelMethodExtension implements MethodsClassReflectionExtension
 {
     private ReflectionProvider $reflectionProvider;
 

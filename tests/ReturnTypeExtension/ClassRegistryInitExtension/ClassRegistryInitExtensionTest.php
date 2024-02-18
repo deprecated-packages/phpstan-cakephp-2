@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\Tests\ReturnTypeExtension\ClassRegistryInitExtension;
 
+use Iterator;
 use PHPStan\Testing\TypeInferenceTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -12,10 +13,13 @@ use PHPUnit\Framework\Attributes\DataProvider;
  */
 final class ClassRegistryInitExtensionTest extends TypeInferenceTestCase
 {
-    /**
-     * @return mixed[]
-     */
-    public static function dataFileAsserts(): \Iterator
+    #[DataProvider('dataFileAsserts')]
+    public function test(string $assertType, string $file, ...$args): void
+    {
+        $this->assertFileAsserts($assertType, $file, ...$args);
+    }
+
+    public static function dataFileAsserts(): Iterator
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/variable_reference.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/not_a_class.php');
@@ -24,12 +28,6 @@ final class ClassRegistryInitExtensionTest extends TypeInferenceTestCase
 
         // this one depends on config path "parameters > schemaPaths"
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/table_without_model.php');
-    }
-
-    #[DataProvider('dataFileAsserts')]
-    public function testControllerExtensions(string $assertType, string $file, ...$args): void
-    {
-        $this->assertFileAsserts($assertType, $file, ...$args);
     }
 
     /**

@@ -15,7 +15,7 @@ use PHPStan\Reflection\ReflectionProvider;
 use PHPStanCakePHP2\Reflection\PublicReadOnlyPropertyReflection;
 
 /**
- * @see \ClassPropertyExtension\ClassComponentPropertyExtension\ClassComponentPropertyExtensionTest
+ * @see \PHPStanCakePHP2\Tests\ClassPropertyExtension\ClassComponentPropertyExtension\ClassComponentPropertyExtensionTest
  */
 final class ClassComponentPropertyExtension implements PropertiesClassReflectionExtension
 {
@@ -31,8 +31,6 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
         if (!array_filter($this->getContainingClassNames(), [$classReflection, 'is'])) {
             return false;
         }
-
-
 
         $isDefinedInComponentsProperty = (bool) array_filter(
             $this->getDefinedComponentsAsList($classReflection),

@@ -11,6 +11,7 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\ParametersAcceptor;
 use PHPStan\Type\ObjectType;
+use PHPStanCakePHP2\Reflection\ModelBehaviorMethodWrapper;
 
 final class ModelBehaviorMethodExtractor
 {
