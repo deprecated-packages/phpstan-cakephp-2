@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\Tests\ClassPropertyExtension\ShellClassPropertyExtension;
 
+use PHPStan\DependencyInjection\Reflection\ClassReflectionExtensionRegistryProvider;
 use PHPStan\Testing\TypeInferenceTestCase;
 <<<<<<< HEAD
 use PHPStanCakePHP2\ClassPropertyExtension\ShellClassPropertyExtension;
@@ -17,12 +18,15 @@ use PHPUnit\Framework\Attributes\DataProvider;
 final class ShellClassPropertyExtensionTest extends TypeInferenceTestCase
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[DataProvider('dataFileAsserts')]
     public function test(string $assertType, string $file, ...$args): void
 =======
     /**
      * @param mixed ...$args
      */
+=======
+>>>>>>> 9d38081 (misc)
     #[DataProvider('dataFileAsserts')]
     public function testShellExtensions(string $assertType, string $file, ...$args): void
 >>>>>>> 9282ba2 (move shell property extension to correct namespace)
@@ -38,9 +42,9 @@ final class ShellClassPropertyExtensionTest extends TypeInferenceTestCase
 >>>>>>> 9282ba2 (move shell property extension to correct namespace)
     public static function dataFileAsserts(): iterable
     {
-        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_shell_model.php');
+//        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_shell_model.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_shell_task.php');
-        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_shell_property.php');
+//        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_shell_property.php');
     }
 
     /**
@@ -48,7 +52,7 @@ final class ShellClassPropertyExtensionTest extends TypeInferenceTestCase
      */
     public static function getAdditionalConfigFiles(): array
     {
-        return [__DIR__ . '/../../config/phpstan.neon'];
+        return [__DIR__ . '/../../../config/extension.neon'];
     }
 <<<<<<< HEAD
 

@@ -24,15 +24,15 @@ final class ClassRegistryInitExtensionTest extends TypeInferenceTestCase
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/basic_model_class_const_fetch.php');
     }
 
-    /**
-     * @param mixed $args
-     */
     #[DataProvider('dataFileAsserts')]
     public function testControllerExtensions(string $assertType, string $file, ...$args): void
     {
         $this->assertFileAsserts($assertType, $file, ...$args);
     }
 
+    /**
+     * @return string[]
+     */
     public static function getAdditionalConfigFiles(): array
     {
         return [

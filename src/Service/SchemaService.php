@@ -51,21 +51,8 @@ final class SchemaService
         return array_key_exists($table, $this->getTableSchemas());
     }
 
-//    /**
-//     * @param string $table
-//     * @return table_schema|null
-//     * @throws Exception
-//     */
-//    public function getTableSchema(string $table)
-//    {
-//        $tableSchemas = $this->getTableSchemas();
-//        return array_key_exists($table, $tableSchemas)
-//            ? $tableSchemas[$table]
-//            : null;
-//    }
-
     /**
-     * @return array<string, table_schema>
+     * @return array<string, mixed>
      *
      * @throws Exception
      */

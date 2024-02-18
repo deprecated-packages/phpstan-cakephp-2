@@ -16,9 +16,8 @@ your configuration. For example:
 ```yaml
 # phpstan.neon
 parameters:
-    ModelBehaviorsExtension:
-        behaviorPaths:
-            - vendor/my-vendor/my-plugin/src/Model/Behavior/*.php
+    behaviorPaths:
+        - vendor/my-vendor/my-plugin/src/Model/Behavior/*.php
 ```
 
 See `extension.neon` for the default list of behavior locations.
