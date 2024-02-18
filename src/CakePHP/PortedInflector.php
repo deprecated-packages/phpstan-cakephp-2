@@ -229,13 +229,13 @@ final class PortedInflector
 
         if (!isset(static::$_plural['cacheUninflected']) || !isset(static::$_plural['cacheIrregular'])) {
             static::$_plural['cacheUninflected'] = '(?:' . implode(
-                    '|',
-                    static::$_plural['merged']['uninflected']
-                ) . ')';
+                '|',
+                static::$_plural['merged']['uninflected']
+            ) . ')';
             static::$_plural['cacheIrregular'] = '(?:' . implode(
-                    '|',
-                    array_keys(static::$_plural['merged']['irregular'])
-                ) . ')';
+                '|',
+                array_keys(static::$_plural['merged']['irregular'])
+            ) . ')';
         }
 
         if (preg_match('/(.*?(?:\\b|_))(' . static::$_plural['cacheIrregular'] . ')$/i', $word, $regs)) {
@@ -272,6 +272,6 @@ final class PortedInflector
     private static function underscore($camelCasedWord)
     {
         $underscoredWord = preg_replace('/(?<=\\w)([A-Z])/', '_\\1', (string) $camelCasedWord);
-        return  mb_strtolower($underscoredWord);
+        return mb_strtolower($underscoredWord);
     }
 }

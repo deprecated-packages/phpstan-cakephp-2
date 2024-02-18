@@ -80,7 +80,7 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
         $definedComponents = [];
 
         foreach (array_merge([$classReflection], $classReflection->getParents()) as $class) {
-            if (! $class->hasProperty('components')) {
+            if (!$class->hasProperty('components')) {
                 continue;
             }
 
@@ -89,7 +89,7 @@ final class ClassComponentPropertyExtension implements PropertiesClassReflection
                 ->getDefaultValueExpression();
 
             if (!$defaultValue instanceof Array_) {
-               continue;
+                continue;
             }
 
             foreach ($defaultValue->items as $item) {

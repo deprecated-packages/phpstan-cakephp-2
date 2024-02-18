@@ -1,6 +1,7 @@
 <?php
 
 namespace PHPStanCakePHP2\Tests\Source\Model\Behavior;
+
 use Model;
 use ModelBehavior;
 
