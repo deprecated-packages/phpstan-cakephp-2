@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ReturnTypeExtension;
 
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
@@ -13,7 +13,7 @@ use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 
-class LoadComponentOnFlyMethodReturnTypeExtension implements DynamicMethodReturnTypeExtension
+final class LoadComponentOnFlyMethodReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
     private ReflectionProvider $reflectionProvider;
 

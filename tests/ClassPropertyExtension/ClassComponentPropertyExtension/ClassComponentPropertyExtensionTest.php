@@ -24,19 +24,10 @@ final class ClassComponentPropertyExtensionTest extends TypeInferenceTestCase
     {
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_component_component.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_component_property.php');
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component.php');
-        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component_from_parent_controller.php');
-        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component_with_same_method_name_as_model.php');
->>>>>>> 054699d (fixup! misc)
-=======
 
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component_from_parent_controller.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_component_with_same_method_name_as_model.php');
->>>>>>> ffdb6aa (fixup! misc)
     }
 
     public static function getAdditionalConfigFiles(): array

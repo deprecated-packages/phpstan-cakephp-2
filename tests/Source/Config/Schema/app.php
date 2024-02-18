@@ -1,5 +1,7 @@
 <?php
 
+use CakeSchema;
+
 class AppSchema extends CakeSchema
 {
     /**

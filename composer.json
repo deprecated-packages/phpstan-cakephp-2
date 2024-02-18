@@ -25,7 +25,7 @@
         },
         "classmap": [
             "stubs",
-            "tests/Feature/classes"
+            "tests/Source"
         ]
     },
     "extra": {
@@ -35,20 +35,11 @@
             ]
         }
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> f95775c (fixup! misc)
     "scripts": {
         "fix-cs": "vendor/bin/ecs check src tests --fix",
         "check-cs": "vendor/bin/ecs check src tests",
         "phpstan": "vendor/bin/phpstan"
     },
-<<<<<<< HEAD
->>>>>>> dd66021 (fixup! misc)
-=======
->>>>>>> f95775c (fixup! misc)
     "config": {
         "allow-plugins": {
             "phpstan/extension-installer": true,

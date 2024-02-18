@@ -16,7 +16,6 @@ parameters:
         - ../stubs/Utility.stub
 
 services:
-    # checked
     -
         class: PHPStanCakePHP2\ClassPropertyExtension\ClassComponentPropertyExtension
         tags:
@@ -27,32 +26,29 @@ services:
         tags:
             - phpstan.broker.propertiesClassReflectionExtension
 
-    # checked
     -
         class: PHPStanCakePHP2\ReturnTypeExtension\ClassRegistryInitExtension
         tags:
             - phpstan.broker.dynamicStaticMethodReturnTypeExtension
 
-    # checked
     -
         class: PHPStanCakePHP2\ClassPropertyExtension\ShellClassPropertyExtension
         tags:
             - phpstan.broker.propertiesClassReflectionExtension
 
     -
-        class: PHPStanCakePHP2\ModelBehaviorsExtension
+        class: PHPStanCakePHP2\ClassMethodExtension\ModelMethodExtension
         arguments:
             behaviorPaths: %behaviorPaths%
         tags:
             - phpstan.broker.methodsClassReflectionExtension
 
     -
-        class: PHPStanCakePHP2\Service\SchemaService
-        arguments:
-            schemaPaths: %schemaPaths%
-
-    -
-        class: PHPStanCakePHP2\LoadComponentOnFlyMethodReturnTypeExtension
+        class: PHPStanCakePHP2\ReturnTypeExtension\LoadComponentOnFlyMethodReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
 
+    -
+        class: PHPStanCakePHP2\Service\SchemaService
+        arguments:
+            schemaPaths: %schemaPaths%

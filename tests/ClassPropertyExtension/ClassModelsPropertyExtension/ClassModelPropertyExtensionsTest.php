@@ -24,6 +24,9 @@ final class ClassModelPropertyExtensionsTest extends TypeInferenceTestCase
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/custom_model_behavior.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_model_property.php');
         yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_model_model.php');
+
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/existing_controller_model.php');
+        yield from self::gatherAssertTypes(__DIR__ . '/Fixture/invalid_controller_property.php');
     }
 
     /**

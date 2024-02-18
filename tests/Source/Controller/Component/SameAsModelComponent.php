@@ -1,5 +1,7 @@
 <?php
 
+use Component;
+
 class SameAsModelComponent extends Component
 {
     public function sameMethod(): int

@@ -6,4 +6,4 @@
 composer.lock
 
 # tests
-.phpunit.result
+.phpunit.result.cache
