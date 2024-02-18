@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ClassPropertyExtension;
 
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStanCakePHP2\PublicReadOnlyPropertyReflection;
 
-abstract class ClassPropertiesExtension implements PropertiesClassReflectionExtension
+abstract class AbstractClassPropertyExtension implements PropertiesClassReflectionExtension
 {
     private ReflectionProvider $reflectionProvider;
 

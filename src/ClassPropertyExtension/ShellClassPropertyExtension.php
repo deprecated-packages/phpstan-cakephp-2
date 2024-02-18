@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PHPStanCakePHP2;
+namespace PHPStanCakePHP2\ClassPropertyExtension;
 
 /**
  * Adds {@link Model}s as properties to {@link Shell}s.
+ *
+ * @see \PHPStanCakePHP2\Tests\ClassPropertyExtension\ShellClassPropertyExtension\ShellClassPropertyExtensionTest
  */
-final class ClassTasksExtension extends ClassPropertiesExtension
+final class ShellClassPropertyExtension extends AbstractClassPropertyExtension
 {
     protected function getPropertyParentClassName(): string
     {
